@@ -1,0 +1,30 @@
+{
+  "framework": "OPQRST",
+  "version": "0.1.0",
+  "primary_use": "General structured symptom clarification",
+  "non_diagnostic": true,
+  "opening_slot": "main_symptom",
+  "slot_order": [
+    "onset",
+    "exacerbating",
+    "relieving",
+    "character",
+    "site",
+    "radiation",
+    "severity",
+    "timing"
+  ],
+  "optional_slots": [
+    "associated"
+  ],
+  "questions": {
+    "onset": "When did you first notice it?",
+    "exacerbating": "Have you noticed anything that brings it on or makes it worse?",
+    "relieving": "Have you noticed anything that makes it better?",
+    "character": "How would you describe the sensation in your own words?",
+    "site": "Where exactly do you feel it?",
+    "radiation": "Does it stay there or move anywhere else?",
+    "severity": "How strong would you say the symptom feels?",
+    "timing": "What pattern have you noticed over time?"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "framework": "SOCRATES",
+  "version": "0.1.0",
+  "primary_use": "Pain symptom clarification",
+  "non_diagnostic": true,
+  "opening_slot": "main_symptom",
+  "slot_order": [
+    "site",
+    "onset",
+    "character",
+    "radiation",
+    "associated",
+    "timing",
+    "exacerbating",
+    "relieving",
+    "severity"
+  ],
+  "questions": {
+    "site": "Where exactly do you feel it?",
+    "onset": "When did you first notice it?",
+    "character": "How would you describe what it feels like in your own words?",
+    "radiation": "Does it stay in that area or move anywhere else?",
+    "associated": "Do you notice anything else happening around the same time?",
+    "timing": "Is it there continuously, or does it come and go?",
+    "exacerbating": "Have you noticed anything that makes it worse?",
+    "relieving": "Have you noticed anything that makes it feel better?",
+    "severity": "On a scale from 0 to 10, where 0 is no pain and 10 is the strongest pain you can imagine, how strong is it at its worst?"
+  }
+}
