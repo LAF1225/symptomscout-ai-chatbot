@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "description": "Canonical symptom information fields used by the Symptom Communication Assistant.",
+  "slots": {
+    "main_symptom": {
+      "display_name": "Main symptom",
+      "value_type": "text",
+      "description": "The patient's main symptom or sensation in their own words."
+    },
+    "site": {
+      "display_name": "Site",
+      "value_type": "text",
+      "description": "Where the patient experiences the symptom."
+    },
+    "onset": {
+      "display_name": "Onset",
+      "value_type": "text",
+      "description": "When the symptom began and, when volunteered, whether onset was sudden or gradual."
+    },
+    "character": {
+      "display_name": "Character",
+      "value_type": "text",
+      "description": "How the patient describes the quality or sensation."
+    },
+    "radiation": {
+      "display_name": "Radiation",
+      "value_type": "text",
+      "description": "Whether the symptom stays in one location or spreads or moves elsewhere."
+    },
+    "associated": {
+      "display_name": "Associated experiences",
+      "value_type": "list",
+      "description": "Other patient-reported experiences occurring around the same time."
+    },
+    "timing": {
+      "display_name": "Timing",
+      "value_type": "text",
+      "description": "The duration, frequency, or temporal pattern of the symptom."
+    },
+    "exacerbating": {
+      "display_name": "Exacerbating factors",
+      "value_type": "text",
+      "description": "Patient-reported factors that make the symptom worse."
+    },
+    "relieving": {
+      "display_name": "Relieving factors",
+      "value_type": "text",
+      "description": "Patient-reported factors that make the symptom better."
+    },
+    "severity": {
+      "display_name": "Severity",
+      "value_type": "integer",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Patient-reported symptom intensity using a 0 to 10 scale when appropriate."
+    }
+  }
+}
