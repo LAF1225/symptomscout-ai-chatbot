@@ -1,0 +1,31 @@
+{
+  "annotation_version": "0.1.0",
+
+  "valid_slots": [
+    "main_symptom",
+    "site",
+    "onset",
+    "character",
+    "radiation",
+    "associated",
+    "timing",
+    "exacerbating",
+    "relieving",
+    "severity"
+  ],
+
+  "review_status_values": [
+    "keep",
+    "discard",
+    "needs_review"
+  ],
+
+  "boolean_flags": [
+    "ambiguous",
+    "negated",
+    "uncertain",
+    "context_dependent"
+  ],
+
+  "description": "Annotation rules for candidate patient-language examples used by the Symptom Communication Assistant."
+}

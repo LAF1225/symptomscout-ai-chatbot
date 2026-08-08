@@ -6,3 +6,9 @@ data/raw/*
 
 data/interim/*
 !data/interim/README.md
+
+# -----------------------------
+# Processed datasets
+# -----------------------------
+data/processed/*
+!data/processed/README.md
