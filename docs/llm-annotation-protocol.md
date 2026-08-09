@@ -161,3 +161,101 @@ Examples:
 
 The example is potentially useful but the correct annotation is not
 clear enough for confident automatic use.
+
+# SymptomScout LLM Annotation Protocol
+
+## Version
+
+Annotation Protocol v0.2
+
+## Purpose
+
+This protocol defines how patient-language examples are annotated for the
+SymptomScout AI Chatbot.
+
+The project is a non-diagnostic symptom communication system based on
+SOCRATES and OPQRST.
+
+The purpose of annotation is to identify what symptom information the
+patient explicitly communicates.
+
+The purpose is NOT to determine what disease, diagnosis, physiological
+mechanism, urgency level, treatment, or clinical interpretation might
+explain the patient's language.
+
+---
+
+# 1. Core Annotation Principle
+
+The annotator should answer:
+
+> What symptom-description information has the patient actually communicated?
+
+The patient's utterance is the primary source of information.
+
+The immediately preceding doctor prompt may be used only to understand
+what a short or context-dependent response refers to.
+
+The doctor prompt must never be treated as patient-confirmed information
+unless the patient explicitly confirms it.
+
+Annotators must not infer:
+
+- diagnoses;
+- diseases;
+- causes;
+- physiological mechanisms;
+- pathology;
+- urgency;
+- treatment requirements;
+- medication requirements;
+- testing requirements;
+- specialist requirements;
+- clinical significance;
+- information not expressed by the patient.
+
+Annotate what the patient's language contains, not what it might mean
+medically.
+
+---
+
+# 2. Valid Annotation Slots
+
+Only the following canonical slots may be used:
+
+- main_symptom
+- site
+- onset
+- character
+- radiation
+- associated
+- timing
+- exacerbating
+- relieving
+- severity
+
+Do not invent additional slot labels during annotation.
+
+---
+
+# 3. Canonical Slot Order
+
+When an utterance contains multiple slots, list them in this order:
+
+1. main_symptom
+2. site
+3. onset
+4. character
+5. radiation
+6. associated
+7. timing
+8. exacerbating
+9. relieving
+10. severity
+
+Separate multiple slots with a semicolon.
+
+Example:
+
+```text
+main_symptom;site;onset;character
