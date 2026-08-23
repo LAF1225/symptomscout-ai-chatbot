@@ -1,0 +1,29 @@
+{
+  "phase": "4",
+  "description": "Targeted corpus gap-filling after Phase 3 analysis.",
+
+  "priority_slots": {
+    "radiation": {
+      "current_examples": 18,
+      "target_additional": 25
+    },
+    "relieving": {
+      "current_examples": 20,
+      "target_additional": 15
+    },
+    "exacerbating": {
+      "current_examples": 26,
+      "target_additional": 15
+    },
+    "main_symptom": {
+      "current_examples": 31,
+      "target_additional": 20
+    }
+  },
+
+  "special_targets": {
+    "ambiguous_examples": 20,
+    "self_contained_examples": 80,
+    "multi_slot_examples": 35
+  }
+}

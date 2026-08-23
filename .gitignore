@@ -12,3 +12,7 @@ data/interim/*
 # -----------------------------
 data/processed/*
 !data/processed/README.md
+
+# Phase 4 working datasets
+data/phase4/*
+!data/phase4/README.md
