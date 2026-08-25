@@ -1,0 +1,38 @@
+{
+  "phase": "5",
+  "description": "Family-aware dataset splitting and preparation for chatbot training and evaluation.",
+
+  "split_ratios": {
+    "train": 0.70,
+    "dev": 0.15,
+    "test": 0.15
+  },
+
+  "random_seed": 42,
+
+  "training_rules": {
+    "review_status": "keep",
+    "prefer_context_independent_for_training_phrases": true
+  },
+
+  "evaluation_subsets": [
+    "contextual",
+    "ambiguity",
+    "negation",
+    "uncertainty",
+    "multislot"
+  ],
+
+  "canonical_slots": [
+    "main_symptom",
+    "site",
+    "onset",
+    "character",
+    "radiation",
+    "associated",
+    "timing",
+    "exacerbating",
+    "relieving",
+    "severity"
+  ]
+}
