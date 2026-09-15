@@ -1,0 +1,41 @@
+{
+  "phase": "6",
+  "agent_name": "SymptomScout",
+  "architecture": "deterministic_flow",
+  "default_language": "en",
+
+  "canonical_slots": [
+    "main_symptom",
+    "site",
+    "onset",
+    "character",
+    "radiation",
+    "associated",
+    "timing",
+    "exacerbating",
+    "relieving",
+    "severity"
+  ],
+
+  "core_intents": [
+    "symptom.opening",
+    "symptom.details",
+    "answer.yes",
+    "answer.no",
+    "answer.uncertain",
+    "answer.correction",
+    "conversation.done"
+  ],
+
+  "flows": [
+    "Default Start Flow",
+    "Symptom Clarification"
+  ],
+
+  "safety": {
+    "diagnosis": false,
+    "differential_diagnosis": false,
+    "treatment_recommendation": false,
+    "urgency_inference": false
+  }
+}

@@ -16,3 +16,13 @@ data/processed/*
 # Phase 4 working datasets
 data/phase4/*
 !data/phase4/README.md
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
