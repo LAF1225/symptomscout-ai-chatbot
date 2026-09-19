@@ -5,33 +5,44 @@ from fastapi import FastAPI
 
 from controller import process_webhook
 from dialogflow_contract import WebhookRequest
+from phase8_controller import (
+    handles_phase8_tag,
+    process_phase8_webhook,
+)
 
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s",
+    format=(
+        "%(asctime)s "
+        "%(levelname)s "
+        "%(message)s"
+    ),
 )
 
 logger = logging.getLogger(
-    "symptomscout.phase7"
+    "symptomscout.phase8"
 )
 
 
 app = FastAPI(
-    title="SymptomScout Phase 7 Controller",
-    version="1.0.0",
+    title="SymptomScout Controller",
+    version="1.1.0",
     description=(
-        "Non-diagnostic conversational control webhook "
-        "for Dialogflow CX."
+        "Non-diagnostic Dialogflow CX webhook "
+        "for symptom communication, dialogue "
+        "control, structured review, and "
+        "patient confirmation."
     ),
 )
 
 
 @app.get("/health")
-def health_check() -> dict:
+def health() -> dict:
     return {
         "status": "ok",
-        "service": "symptomscout-phase7",
+        "service": "symptomscout",
+        "phase": "8",
     }
 
 
@@ -40,29 +51,61 @@ def dialogflow_webhook(
     request: WebhookRequest,
 ) -> dict:
 
-    start_time = time.perf_counter()
+    started = time.perf_counter()
 
-    response = process_webhook(
-        request
+    tag = (
+        request.fulfillment_info.tag
+        or ""
+    ).strip()
+
+    # Phase 8 requests are handled separately.
+    # Everything else remains controlled by
+    # the proven Phase 7 controller.
+    if handles_phase8_tag(tag):
+
+        response = (
+            process_phase8_webhook(
+                request
+            )
+        )
+
+    else:
+
+        response = process_webhook(
+            request
+        )
+
+    response_parameters = (
+        response
+        .get("sessionInfo", {})
+        .get("parameters", {})
+        if isinstance(
+            response,
+            dict,
+        )
+        else {}
     )
 
-    duration_ms = (
-        time.perf_counter() - start_time
-    ) * 1000
+    action = (
+        response_parameters.get(
+            "p8_action"
+        )
+        or response_parameters.get(
+            "p7_action"
+        )
+        or "unknown"
+    )
 
-    session = (
+    session_id = (
         request.session_info.session
         or ""
     )
 
-    session_id = (
-        session.rsplit("/", 1)[-1]
-        if session
-        else "unknown"
+    session_tail = (
+        session_id[-8:]
+        if session_id
+        else ""
     )
-
-    # Log only a shortened identifier.
-    session_tail = session_id[-8:]
 
     page_name = (
         request.page_info.display_name
@@ -70,20 +113,20 @@ def dialogflow_webhook(
         else ""
     )
 
-    tag = (
-        request.fulfillment_info.tag
-        or ""
-    )
+    duration_ms = (
+        time.perf_counter()
+        - started
+    ) * 1000
 
-    action = (
-        response
-        .get("sessionInfo", {})
-        .get("parameters", {})
-        .get("p7_action", "")
-    )
-
+    # Do NOT log symptom content.
     logger.info(
-        "webhook session=%s page=%s tag=%s action=%s duration_ms=%.2f",
+        (
+            "webhook session=%s "
+            "page=%s "
+            "tag=%s "
+            "action=%s "
+            "duration_ms=%.2f"
+        ),
         session_tail,
         page_name,
         tag,
