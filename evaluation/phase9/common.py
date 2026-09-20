@@ -1,16 +1,38 @@
 from __future__ import annotations
 
+import ast
 import csv
+import json
 import re
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
 
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
+
 ROOT = Path(__file__).resolve().parents[2]
 
-TEST_CSV = ROOT / "data" / "processed" / "phase5" / "test.csv"
-REPORT_DIR = ROOT / "reports" / "phase9"
+TEST_CSV = (
+    ROOT
+    / "data"
+    / "processed"
+    / "phase5"
+    / "test.csv"
+)
 
+REPORT_DIR = (
+    ROOT
+    / "reports"
+    / "phase9"
+)
+
+
+# ---------------------------------------------------------------------------
+# Canonical symptom slots
+# ---------------------------------------------------------------------------
 
 CANONICAL_SLOTS = [
     "main_symptom",
@@ -26,6 +48,7 @@ CANONICAL_SLOTS = [
 ]
 
 
+# These page names are used later by the Dialogflow CX evaluator.
 PAGE_FOR_SLOT = {
     "main_symptom": "Collect Main Symptom",
     "site": "Collect Site",
@@ -40,7 +63,12 @@ PAGE_FOR_SLOT = {
 }
 
 
-# These are the locked Phase 5 TEST-set totals from the split.
+# ---------------------------------------------------------------------------
+# Frozen Phase 5 TEST-set integrity values
+# ---------------------------------------------------------------------------
+
+EXPECTED_TEST_ROW_COUNT = 57
+
 EXPECTED_FLAG_COUNTS = {
     "ambiguous": 7,
     "negated": 8,
@@ -49,23 +77,44 @@ EXPECTED_FLAG_COUNTS = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Dataset column aliases
+#
+# IMPORTANT:
+# The real Phase 5 dataset uses:
+#
+#   annotation_id
+#   utterance
+#   final_slots
+#   slot_count
+#   ...
+#
+# final_slots may contain more than one canonical slot.
+# ---------------------------------------------------------------------------
+
 COLUMN_ALIASES = {
     "id": [
+        "annotation_id",
         "id",
         "row_id",
         "example_id",
         "utterance_id",
         "sample_id",
     ],
+
     "text": [
-        "text",
         "utterance",
+        "text",
         "sentence",
         "patient_text",
         "example",
         "phrase",
     ],
-    "slot": [
+
+    "slots": [
+        "final_slots",
+        "final_slot",
+        "slots",
         "slot",
         "slot_label",
         "slot_name",
@@ -74,28 +123,52 @@ COLUMN_ALIASES = {
         "category",
         "final_label",
     ],
+
+    "slot_count": [
+        "slot_count",
+        "number_of_slots",
+        "num_slots",
+    ],
+
     "ambiguous": [
         "ambiguous",
         "is_ambiguous",
         "flag_ambiguous",
     ],
+
     "negated": [
         "negated",
         "is_negated",
         "flag_negated",
     ],
+
     "uncertain": [
         "uncertain",
         "is_uncertain",
         "flag_uncertain",
     ],
+
     "context_dependent": [
         "context_dependent",
         "is_context_dependent",
         "contextdependent",
     ],
+
+    "split": [
+        "split",
+        "dataset_split",
+    ],
+
+    "review_status": [
+        "review_status",
+        "status",
+    ],
 }
 
+
+# ---------------------------------------------------------------------------
+# Slot aliases
+# ---------------------------------------------------------------------------
 
 SLOT_ALIASES = {
     "main symptom": "main_symptom",
@@ -152,9 +225,19 @@ FALSE_VALUES = {
 }
 
 
+# ---------------------------------------------------------------------------
+# General helpers
+# ---------------------------------------------------------------------------
+
 def normalize_column_name(value: str) -> str:
     value = value.strip().lower()
-    value = re.sub(r"[\s\-]+", "_", value)
+
+    value = re.sub(
+        r"[\s\-]+",
+        "_",
+        value,
+    )
+
     return value
 
 
@@ -163,9 +246,12 @@ def normalize_text(value: Any) -> str:
         return ""
 
     value = str(value)
-    value = re.sub(r"\s+", " ", value.strip().lower())
 
-    return value
+    return re.sub(
+        r"\s+",
+        " ",
+        value.strip().lower(),
+    )
 
 
 def parse_bool(value: Any) -> bool | None:
@@ -191,7 +277,15 @@ def parse_bool(value: Any) -> bool | None:
     )
 
 
+# ---------------------------------------------------------------------------
+# Slot parsing
+# ---------------------------------------------------------------------------
+
 def canonical_slot(value: Any) -> str | None:
+    """
+    Convert one raw slot label into one of the ten canonical names.
+    """
+
     if value is None:
         return None
 
@@ -200,13 +294,25 @@ def canonical_slot(value: Any) -> str | None:
     if not raw:
         return None
 
-    normalized = raw.replace("-", " ").replace("_", " ")
-    normalized = re.sub(r"\s+", " ", normalized)
+    normalized = (
+        raw
+        .replace("-", " ")
+        .replace("_", " ")
+    )
+
+    normalized = re.sub(
+        r"\s+",
+        " ",
+        normalized,
+    )
 
     if normalized in SLOT_ALIASES:
         return SLOT_ALIASES[normalized]
 
-    underscored = normalized.replace(" ", "_")
+    underscored = normalized.replace(
+        " ",
+        "_",
+    )
 
     if underscored in CANONICAL_SLOTS:
         return underscored
@@ -214,7 +320,136 @@ def canonical_slot(value: Any) -> str | None:
     return None
 
 
-def resolve_columns(fieldnames: list[str]) -> dict[str, str | None]:
+def _extract_raw_slot_items(
+    value: Any,
+) -> list[str]:
+    """
+    Parse final_slots robustly.
+
+    Supports common representations such as:
+
+        ['site', 'onset']
+        ["site", "onset"]
+        site|onset
+        site;onset
+        site,onset
+        site
+    """
+
+    if value is None:
+        return []
+
+    if isinstance(
+        value,
+        (list, tuple, set),
+    ):
+        return [
+            str(item).strip()
+            for item in value
+            if str(item).strip()
+        ]
+
+    raw = str(value).strip()
+
+    if not raw:
+        return []
+
+    # First try genuine JSON.
+    try:
+        parsed = json.loads(raw)
+
+        if isinstance(parsed, list):
+            return [
+                str(item).strip()
+                for item in parsed
+                if str(item).strip()
+            ]
+
+        if isinstance(parsed, str):
+            return [parsed.strip()]
+
+    except (json.JSONDecodeError, TypeError):
+        pass
+
+    # Then try Python-style list strings:
+    #
+    # ['site', 'onset']
+    #
+    try:
+        parsed = ast.literal_eval(raw)
+
+        if isinstance(
+            parsed,
+            (list, tuple, set),
+        ):
+            return [
+                str(item).strip()
+                for item in parsed
+                if str(item).strip()
+            ]
+
+        if isinstance(parsed, str):
+            return [parsed.strip()]
+
+    except (
+        ValueError,
+        SyntaxError,
+        TypeError,
+    ):
+        pass
+
+    # Finally support ordinary delimited text.
+    cleaned = raw.strip("[](){}")
+
+    pieces = re.split(
+        r"[|;,]+",
+        cleaned,
+    )
+
+    return [
+        piece.strip().strip("'\"")
+        for piece in pieces
+        if piece.strip().strip("'\"")
+    ]
+
+
+def parse_slots(
+    value: Any,
+) -> list[str]:
+    """
+    Parse a final_slots value into canonical slot names.
+
+    Raises ValueError instead of silently dropping an unknown label.
+    """
+
+    raw_items = _extract_raw_slot_items(
+        value
+    )
+
+    parsed: list[str] = []
+
+    for raw_item in raw_items:
+        slot = canonical_slot(raw_item)
+
+        if slot is None:
+            raise ValueError(
+                f"Unrecognized slot label: {raw_item!r}"
+            )
+
+        if slot not in parsed:
+            parsed.append(slot)
+
+    return parsed
+
+
+# ---------------------------------------------------------------------------
+# Column resolution
+# ---------------------------------------------------------------------------
+
+def resolve_columns(
+    fieldnames: list[str],
+) -> dict[str, str | None]:
+
     normalized_lookup = {
         normalize_column_name(field): field
         for field in fieldnames
@@ -226,19 +461,37 @@ def resolve_columns(fieldnames: list[str]) -> dict[str, str | None]:
         resolved[logical_name] = None
 
         for alias in aliases:
-            normalized_alias = normalize_column_name(alias)
+            normalized_alias = (
+                normalize_column_name(alias)
+            )
 
-            if normalized_alias in normalized_lookup:
-                resolved[logical_name] = normalized_lookup[normalized_alias]
+            if (
+                normalized_alias
+                in normalized_lookup
+            ):
+                resolved[logical_name] = (
+                    normalized_lookup[
+                        normalized_alias
+                    ]
+                )
+
                 break
 
     return resolved
 
 
-def load_test_rows() -> tuple[list[dict[str, str]], dict[str, str | None]]:
+# ---------------------------------------------------------------------------
+# TEST-set loading
+# ---------------------------------------------------------------------------
+
+def load_test_rows() -> tuple[
+    list[dict[str, str]],
+    dict[str, str | None],
+]:
     if not TEST_CSV.exists():
         raise FileNotFoundError(
-            f"Frozen Phase 5 TEST split was not found at:\n{TEST_CSV}"
+            "Frozen Phase 5 TEST split was not found at:\n"
+            f"{TEST_CSV}"
         )
 
     with TEST_CSV.open(
@@ -246,6 +499,7 @@ def load_test_rows() -> tuple[list[dict[str, str]], dict[str, str | None]]:
         encoding="utf-8-sig",
         newline="",
     ) as handle:
+
         reader = csv.DictReader(handle)
 
         if reader.fieldnames is None:
@@ -254,28 +508,42 @@ def load_test_rows() -> tuple[list[dict[str, str]], dict[str, str | None]]:
             )
 
         rows = list(reader)
-        columns = resolve_columns(reader.fieldnames)
+
+        columns = resolve_columns(
+            reader.fieldnames
+        )
+
+        fieldnames = list(
+            reader.fieldnames
+        )
 
     if columns["text"] is None:
         raise RuntimeError(
-            "Could not identify the text column in test.csv.\n"
-            f"Columns found: {reader.fieldnames}"
+            "Could not identify the utterance/text "
+            "column in test.csv.\n"
+            f"Columns found: {fieldnames}"
         )
 
-    if columns["slot"] is None:
+    if columns["slots"] is None:
         raise RuntimeError(
-            "Could not identify the slot-label column in test.csv.\n"
-            f"Columns found: {reader.fieldnames}"
+            "Could not identify the final_slots "
+            "column in test.csv.\n"
+            f"Columns found: {fieldnames}"
         )
 
     return rows, columns
 
+
+# ---------------------------------------------------------------------------
+# Row ID
+# ---------------------------------------------------------------------------
 
 def row_id(
     row: dict[str, str],
     columns: dict[str, str | None],
     fallback_index: int,
 ) -> str:
+
     id_column = columns.get("id")
 
     if id_column:
@@ -284,72 +552,239 @@ def row_id(
         if value and value.strip():
             return value.strip()
 
-    return f"test-row-{fallback_index:03d}"
+    return (
+        f"test-row-{fallback_index:03d}"
+    )
 
+
+# ---------------------------------------------------------------------------
+# Frozen TEST-set audit
+# ---------------------------------------------------------------------------
 
 def audit_test_rows(
     rows: list[dict[str, str]],
     columns: dict[str, str | None],
 ) -> dict:
+
     errors: list[str] = []
     warnings: list[str] = []
 
-    if len(rows) != 57:
+    # -------------------------------------------------------
+    # Row count
+    # -------------------------------------------------------
+
+    if len(rows) != EXPECTED_TEST_ROW_COUNT:
         errors.append(
-            f"Expected exactly 57 frozen TEST rows; found {len(rows)}."
+            "Expected exactly "
+            f"{EXPECTED_TEST_ROW_COUNT} "
+            "frozen TEST rows; "
+            f"found {len(rows)}."
         )
 
-    slot_column = columns["slot"]
     text_column = columns["text"]
+    slots_column = columns["slots"]
 
-    invalid_slots: list[dict] = []
     empty_text_rows: list[int] = []
+    invalid_slot_rows: list[dict] = []
+    empty_slot_rows: list[int] = []
+    slot_count_mismatches: list[dict] = []
 
-    for index, row in enumerate(rows, start=1):
-        text = row.get(text_column or "", "")
+    slot_frequency: Counter[str] = Counter()
+
+    multi_slot_rows = 0
+    total_slot_annotations = 0
+
+    # -------------------------------------------------------
+    # Row-by-row schema validation
+    # -------------------------------------------------------
+
+    for index, row in enumerate(
+        rows,
+        start=1,
+    ):
+        text = row.get(
+            text_column or "",
+            "",
+        )
 
         if not str(text).strip():
             empty_text_rows.append(index)
 
-        slot = canonical_slot(
-            row.get(slot_column or "")
+        raw_slots = row.get(
+            slots_column or "",
+            "",
         )
 
-        if slot not in CANONICAL_SLOTS:
-            invalid_slots.append(
+        try:
+            slots = parse_slots(
+                raw_slots
+            )
+
+        except ValueError as exc:
+            invalid_slot_rows.append(
                 {
                     "row": index,
-                    "raw_slot": row.get(slot_column or ""),
+                    "value": raw_slots,
+                    "error": str(exc),
                 }
             )
 
+            continue
+
+        if not slots:
+            empty_slot_rows.append(index)
+            continue
+
+        total_slot_annotations += len(
+            slots
+        )
+
+        if len(slots) > 1:
+            multi_slot_rows += 1
+
+        slot_frequency.update(
+            slots
+        )
+
+        # Validate the existing slot_count column if present.
+        slot_count_column = columns.get(
+            "slot_count"
+        )
+
+        if slot_count_column:
+            raw_count = str(
+                row.get(
+                    slot_count_column,
+                    "",
+                )
+            ).strip()
+
+            if raw_count:
+                try:
+                    expected_count = int(
+                        float(raw_count)
+                    )
+
+                except ValueError:
+                    slot_count_mismatches.append(
+                        {
+                            "row": index,
+                            "declared": raw_count,
+                            "parsed": len(slots),
+                            "reason": (
+                                "slot_count is not numeric"
+                            ),
+                        }
+                    )
+
+                else:
+                    if expected_count != len(slots):
+                        slot_count_mismatches.append(
+                            {
+                                "row": index,
+                                "declared": expected_count,
+                                "parsed": len(slots),
+                            }
+                        )
+
     if empty_text_rows:
         errors.append(
-            f"Rows with empty text: {empty_text_rows}"
+            "Rows with empty utterance text: "
+            f"{empty_text_rows}"
         )
 
-    if invalid_slots:
+    if invalid_slot_rows:
         errors.append(
-            f"Rows with unrecognized slot labels: {invalid_slots}"
+            "Rows with unrecognized final_slots: "
+            f"{invalid_slot_rows}"
         )
 
-    flag_counts: dict[str, int | None] = {}
+    if empty_slot_rows:
+        errors.append(
+            "Rows with no final slot annotations: "
+            f"{empty_slot_rows}"
+        )
 
-    for flag, expected_count in EXPECTED_FLAG_COUNTS.items():
+    if slot_count_mismatches:
+        errors.append(
+            "slot_count does not match parsed "
+            "final_slots for: "
+            f"{slot_count_mismatches}"
+        )
+
+    # -------------------------------------------------------
+    # Verify split column
+    # -------------------------------------------------------
+
+    split_column = columns.get(
+        "split"
+    )
+
+    split_values: Counter[str] = Counter()
+
+    if split_column:
+        for row in rows:
+            value = str(
+                row.get(
+                    split_column,
+                    "",
+                )
+            ).strip().lower()
+
+            split_values[value] += 1
+
+        non_test_values = {
+            value: count
+            for value, count
+            in split_values.items()
+            if value != "test"
+        }
+
+        if non_test_values:
+            errors.append(
+                "Frozen test.csv contains rows whose "
+                "split is not 'test': "
+                f"{non_test_values}"
+            )
+
+    else:
+        warnings.append(
+            "No split column was detected, so "
+            "split='test' could not be verified."
+        )
+
+    # -------------------------------------------------------
+    # Verify frozen safety-flag counts
+    # -------------------------------------------------------
+
+    flag_counts: dict[
+        str,
+        int | None,
+    ] = {}
+
+    for (
+        flag,
+        expected_count,
+    ) in EXPECTED_FLAG_COUNTS.items():
+
         column = columns.get(flag)
 
         if column is None:
             flag_counts[flag] = None
+
             warnings.append(
                 f"No column detected for {flag}; "
                 "its frozen count could not be verified."
             )
+
             continue
 
         actual_count = 0
 
         for row in rows:
-            value = parse_bool(row.get(column))
+            value = parse_bool(
+                row.get(column)
+            )
 
             if value is True:
                 actual_count += 1
@@ -359,18 +794,45 @@ def audit_test_rows(
         if actual_count != expected_count:
             errors.append(
                 f"{flag}: expected frozen count "
-                f"{expected_count}, found {actual_count}."
+                f"{expected_count}, "
+                f"found {actual_count}."
             )
 
     return {
         "row_count": len(rows),
-        "expected_row_count": 57,
+
+        "expected_row_count": (
+            EXPECTED_TEST_ROW_COUNT
+        ),
+
+        "multi_slot_rows": multi_slot_rows,
+
+        "total_slot_annotations": (
+            total_slot_annotations
+        ),
+
+        "slot_frequency": dict(
+            slot_frequency
+        ),
+
         "flag_counts": flag_counts,
-        "expected_flag_counts": EXPECTED_FLAG_COUNTS,
+
+        "expected_flag_counts": (
+            EXPECTED_FLAG_COUNTS
+        ),
+
+        "split_values": dict(
+            split_values
+        ),
+
         "errors": errors,
         "warnings": warnings,
     }
 
+
+# ---------------------------------------------------------------------------
+# Reports
+# ---------------------------------------------------------------------------
 
 def ensure_report_directory() -> Path:
     REPORT_DIR.mkdir(

@@ -1,0 +1,2916 @@
+{
+  "phase": 9,
+  "evaluation": "dialogflow_slot_collection_evaluation",
+  "method": "Each (utterance, annotated slot) pair from the multi-label Phase 5 frozen TEST split is evaluated independently. A fresh Dialogflow CX session is placed directly on the collection page for that slot. Webhook execution is disabled so this measures Dialogflow form/entity capture separately from Phase 7 backend logic.",
+  "project_id": "symptomscout-ai-chatbot",
+  "location": "global",
+  "agent_id": "4f1cdda8-acb4-47d3-8f5c-450e6d1933cd",
+  "language_code": "en",
+  "webhook_disabled": true,
+  "audit": {
+    "row_count": 57,
+    "expected_row_count": 57,
+    "multi_slot_rows": 19,
+    "total_slot_annotations": 98,
+    "slot_frequency": {
+      "associated": 14,
+      "exacerbating": 7,
+      "character": 13,
+      "main_symptom": 9,
+      "site": 8,
+      "onset": 13,
+      "timing": 9,
+      "severity": 11,
+      "relieving": 6,
+      "radiation": 8
+    },
+    "flag_counts": {
+      "ambiguous": 7,
+      "negated": 8,
+      "uncertain": 2,
+      "context_dependent": 21
+    },
+    "expected_flag_counts": {
+      "ambiguous": 7,
+      "negated": 8,
+      "uncertain": 2,
+      "context_dependent": 21
+    },
+    "split_values": {
+      "test": 57
+    },
+    "errors": [],
+    "warnings": []
+  },
+  "summary": {
+    "frozen_test_rows": 57,
+    "total_annotated_slot_pairs": 98,
+    "multi_slot_rows": 19,
+    "successful_api_requests": 98,
+    "slot_pair_filled_count": 88,
+    "slot_pair_fill_rate": 0.8979591836734694,
+    "slot_pair_exact_text_count": 77,
+    "slot_pair_exact_text_rate": 0.7857142857142857,
+    "rows_all_annotated_slots_filled": 49,
+    "row_all_slots_fill_rate": 0.8596491228070176,
+    "rows_all_annotated_slots_exact": 39,
+    "row_all_slots_exact_rate": 0.6842105263157895,
+    "per_slot": {
+      "associated": {
+        "pairs": 14,
+        "successful_requests": 14,
+        "filled": 13,
+        "exact": 13,
+        "errors": 0
+      },
+      "exacerbating": {
+        "pairs": 7,
+        "successful_requests": 7,
+        "filled": 7,
+        "exact": 7,
+        "errors": 0
+      },
+      "character": {
+        "pairs": 13,
+        "successful_requests": 13,
+        "filled": 13,
+        "exact": 13,
+        "errors": 0
+      },
+      "main_symptom": {
+        "pairs": 9,
+        "successful_requests": 9,
+        "filled": 8,
+        "exact": 0,
+        "errors": 0
+      },
+      "site": {
+        "pairs": 8,
+        "successful_requests": 8,
+        "filled": 8,
+        "exact": 8,
+        "errors": 0
+      },
+      "onset": {
+        "pairs": 13,
+        "successful_requests": 13,
+        "filled": 13,
+        "exact": 13,
+        "errors": 0
+      },
+      "timing": {
+        "pairs": 9,
+        "successful_requests": 9,
+        "filled": 3,
+        "exact": 0,
+        "errors": 0
+      },
+      "severity": {
+        "pairs": 11,
+        "successful_requests": 11,
+        "filled": 9,
+        "exact": 9,
+        "errors": 0
+      },
+      "relieving": {
+        "pairs": 6,
+        "successful_requests": 6,
+        "filled": 6,
+        "exact": 6,
+        "errors": 0
+      },
+      "radiation": {
+        "pairs": 8,
+        "successful_requests": 8,
+        "filled": 8,
+        "exact": 8,
+        "errors": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "row_id": "174",
+      "utterance": "I haven't, but this might not be related. I had pneumonia ten days before this all started.",
+      "annotated_slots": [
+        "associated"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "associated"
+      ],
+      "exact_slots": [
+        "associated"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "398",
+      "utterance": "It hurts when I move the shoulder.",
+      "annotated_slots": [
+        "exacerbating"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "exacerbating"
+      ],
+      "exact_slots": [
+        "exacerbating"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "693",
+      "utterance": "Um, I'd say its shooting, sharp, and, um, aching.",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "750",
+      "utterance": "I came back because I increased my methothrexate as we discussed the last time I was here. A few days later I started getting multiple canker sores in my mouth. They hurt.",
+      "annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset"
+      ],
+      "pair_count": 3,
+      "filled_slots": [
+        "main_symptom",
+        "site",
+        "onset"
+      ],
+      "exact_slots": [
+        "site",
+        "onset"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "899",
+      "utterance": "Yes! I feel constant tingling sensation and a feeling that something is pinching my never. Sometimes it's just so painful.",
+      "annotated_slots": [
+        "character",
+        "timing",
+        "severity"
+      ],
+      "pair_count": 3,
+      "filled_slots": [
+        "character",
+        "timing",
+        "severity"
+      ],
+      "exact_slots": [
+        "character",
+        "severity"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "1025",
+      "utterance": "Um, I had my first one about two months ago.",
+      "annotated_slots": [
+        "onset"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "onset"
+      ],
+      "exact_slots": [
+        "onset"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "1028",
+      "utterance": "I'd say it feels like a pressure sensation.",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "1082",
+      "utterance": "I felt a sharp pain in my lower back right away when I tried to lift those boxes.",
+      "annotated_slots": [
+        "site",
+        "onset",
+        "character"
+      ],
+      "pair_count": 3,
+      "filled_slots": [
+        "site",
+        "onset",
+        "character"
+      ],
+      "exact_slots": [
+        "site",
+        "onset",
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "1213",
+      "utterance": "Um, actually yeah, I've been having some respiratory problems for the last three days or so.",
+      "annotated_slots": [
+        "onset",
+        "associated"
+      ],
+      "pair_count": 2,
+      "filled_slots": [
+        "onset",
+        "associated"
+      ],
+      "exact_slots": [
+        "onset",
+        "associated"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "1244",
+      "utterance": "A few days after the numbness started.",
+      "annotated_slots": [
+        "onset"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "onset"
+      ],
+      "exact_slots": [
+        "onset"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "1395",
+      "utterance": "Mostly, it's in the back of my shoulder.",
+      "annotated_slots": [
+        "site"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "site"
+      ],
+      "exact_slots": [
+        "site"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "1396",
+      "utterance": "It hurt really bad yesterday, but that's gone away now.",
+      "annotated_slots": [
+        "site",
+        "timing",
+        "severity"
+      ],
+      "pair_count": 3,
+      "filled_slots": [
+        "site",
+        "severity"
+      ],
+      "exact_slots": [
+        "site",
+        "severity"
+      ],
+      "failed_slots": [
+        "timing"
+      ],
+      "all_annotated_slots_filled": false,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "1493",
+      "utterance": "Huh, my symptoms have sure started affecting my work. You know what the worst part is, my boss came to me last week and asked if I was on some kinds of drugs. I literally shouted at her saying no and left the clinic in tears. I think I need some drugs; I mean some medications to deal with my issues.",
+      "annotated_slots": [
+        "severity"
+      ],
+      "pair_count": 1,
+      "filled_slots": [],
+      "exact_slots": [],
+      "failed_slots": [
+        "severity"
+      ],
+      "all_annotated_slots_filled": false,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "1534",
+      "utterance": "I began having weakness in my right arm, and there was some neck pain too.",
+      "annotated_slots": [
+        "main_symptom",
+        "site",
+        "associated"
+      ],
+      "pair_count": 3,
+      "filled_slots": [
+        "main_symptom",
+        "site",
+        "associated"
+      ],
+      "exact_slots": [
+        "site",
+        "associated"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "1785",
+      "utterance": "At least three times until my stomach is empty.",
+      "annotated_slots": [
+        "timing"
+      ],
+      "pair_count": 1,
+      "filled_slots": [],
+      "exact_slots": [],
+      "failed_slots": [
+        "timing"
+      ],
+      "all_annotated_slots_filled": false,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "1816",
+      "utterance": "Honestly, I feel tired. Sometimes I also have this dull headache.",
+      "annotated_slots": [
+        "main_symptom",
+        "character",
+        "associated",
+        "timing"
+      ],
+      "pair_count": 4,
+      "filled_slots": [
+        "main_symptom",
+        "character",
+        "associated"
+      ],
+      "exact_slots": [
+        "character",
+        "associated"
+      ],
+      "failed_slots": [
+        "timing"
+      ],
+      "all_annotated_slots_filled": false,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "1985",
+      "utterance": "Not really, no.",
+      "annotated_slots": [
+        "associated"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "associated"
+      ],
+      "exact_slots": [
+        "associated"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "2017",
+      "utterance": "No.",
+      "annotated_slots": [
+        "associated"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "associated"
+      ],
+      "exact_slots": [
+        "associated"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "2160",
+      "utterance": "For the past three months. I've been using my inhaler every day. I used to use it every now and again. This is definitely new for me.",
+      "annotated_slots": [
+        "onset"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "onset"
+      ],
+      "exact_slots": [
+        "onset"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "2363",
+      "utterance": "Yeah, I do feel feverish and have nausea as well.",
+      "annotated_slots": [
+        "associated"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "associated"
+      ],
+      "exact_slots": [
+        "associated"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "2383",
+      "utterance": "Yes, there was the fever and chills. I was sweating a lot in the nights, and I also had weight loss of around twenty pounds. During that time, I sometimes have nausea and was throwing up a lot. I was not eating. I always felt dizzy every time I tried to stand.",
+      "annotated_slots": [
+        "associated",
+        "timing",
+        "severity"
+      ],
+      "pair_count": 3,
+      "filled_slots": [],
+      "exact_slots": [],
+      "failed_slots": [
+        "associated",
+        "timing",
+        "severity"
+      ],
+      "all_annotated_slots_filled": false,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "2443",
+      "utterance": "Wow, that's right where it hurts.",
+      "annotated_slots": [
+        "site"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "site"
+      ],
+      "exact_slots": [
+        "site"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "2546",
+      "utterance": "Panic attacks. I have really bad episodes without it. Um I think I started it about four months ago. I could be wrong though. I've lost track of time.",
+      "annotated_slots": [
+        "main_symptom",
+        "severity"
+      ],
+      "pair_count": 2,
+      "filled_slots": [
+        "severity"
+      ],
+      "exact_slots": [
+        "severity"
+      ],
+      "failed_slots": [
+        "main_symptom"
+      ],
+      "all_annotated_slots_filled": false,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "2771",
+      "utterance": "Well, sometimes, you see, hot showers made me feel better, but it is like only sometimes.",
+      "annotated_slots": [
+        "relieving"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "relieving"
+      ],
+      "exact_slots": [
+        "relieving"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "2947",
+      "utterance": "Laying on my side helps a little.",
+      "annotated_slots": [
+        "relieving"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "relieving"
+      ],
+      "exact_slots": [
+        "relieving"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "3071",
+      "utterance": "Um, I'd say it's deep, and it really aches.",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "3073",
+      "utterance": "I can't go up and down stairs without a lot of pain, and it hurts when I sit for a long time, like when I drive.",
+      "annotated_slots": [
+        "exacerbating",
+        "severity"
+      ],
+      "pair_count": 2,
+      "filled_slots": [
+        "exacerbating",
+        "severity"
+      ],
+      "exact_slots": [
+        "exacerbating",
+        "severity"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "3142",
+      "utterance": "Do you know I lost twenty pound of weight since all these symptoms began but i have been also admitted for poor appetite.",
+      "annotated_slots": [
+        "associated"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "associated"
+      ],
+      "exact_slots": [
+        "associated"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "3413",
+      "utterance": "Um no, not really. I've had a terrible cough along with frequent headaches and chest congestion. I have also had a low fever.",
+      "annotated_slots": [
+        "associated",
+        "timing",
+        "exacerbating",
+        "severity"
+      ],
+      "pair_count": 4,
+      "filled_slots": [
+        "associated",
+        "timing",
+        "exacerbating",
+        "severity"
+      ],
+      "exact_slots": [
+        "associated",
+        "exacerbating",
+        "severity"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "3488",
+      "utterance": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "annotated_slots": [
+        "site",
+        "associated",
+        "exacerbating",
+        "severity"
+      ],
+      "pair_count": 4,
+      "filled_slots": [
+        "site",
+        "associated",
+        "exacerbating",
+        "severity"
+      ],
+      "exact_slots": [
+        "site",
+        "associated",
+        "exacerbating",
+        "severity"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "3493",
+      "utterance": "Yeah, for the last three days and I am having these tummy issues. I'm having on and off nausea and also, my stools are coming loose.",
+      "annotated_slots": [
+        "onset",
+        "associated",
+        "timing"
+      ],
+      "pair_count": 3,
+      "filled_slots": [
+        "onset",
+        "associated",
+        "timing"
+      ],
+      "exact_slots": [
+        "onset",
+        "associated"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "3502",
+      "utterance": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "annotated_slots": [
+        "onset",
+        "associated",
+        "relieving",
+        "severity"
+      ],
+      "pair_count": 4,
+      "filled_slots": [
+        "onset",
+        "associated",
+        "relieving",
+        "severity"
+      ],
+      "exact_slots": [
+        "onset",
+        "associated",
+        "relieving",
+        "severity"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "4013",
+      "utterance": "I hurt my foot pretty bad yesterday.",
+      "annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset",
+        "severity"
+      ],
+      "pair_count": 4,
+      "filled_slots": [
+        "main_symptom",
+        "site",
+        "onset",
+        "severity"
+      ],
+      "exact_slots": [
+        "site",
+        "onset",
+        "severity"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "4076",
+      "utterance": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "annotated_slots": [
+        "character",
+        "timing",
+        "exacerbating",
+        "relieving",
+        "severity"
+      ],
+      "pair_count": 5,
+      "filled_slots": [
+        "character",
+        "exacerbating",
+        "relieving",
+        "severity"
+      ],
+      "exact_slots": [
+        "character",
+        "exacerbating",
+        "relieving",
+        "severity"
+      ],
+      "failed_slots": [
+        "timing"
+      ],
+      "all_annotated_slots_filled": false,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "4106",
+      "utterance": "I'm back on Zoloft again because I think I might be depressed. Ever since losing most of my mobility, I haven't been feeling like my usual myself. I'm also sleeping all the time.",
+      "annotated_slots": [
+        "associated",
+        "timing"
+      ],
+      "pair_count": 2,
+      "filled_slots": [
+        "associated"
+      ],
+      "exact_slots": [
+        "associated"
+      ],
+      "failed_slots": [
+        "timing"
+      ],
+      "all_annotated_slots_filled": false,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "4454",
+      "utterance": "It's been about eight or ten years now. It began while I was working in construction.",
+      "annotated_slots": [
+        "onset"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "onset"
+      ],
+      "exact_slots": [
+        "onset"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "4455",
+      "utterance": "I'm thirty two now, so I've been in pain since I was in my twenties.",
+      "annotated_slots": [
+        "onset"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "onset"
+      ],
+      "exact_slots": [
+        "onset"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S002",
+      "utterance": "The ache travels from my ear to the front of my temple",
+      "annotated_slots": [
+        "radiation"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "radiation"
+      ],
+      "exact_slots": [
+        "radiation"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-RAD002-P01",
+      "utterance": "The ache moves from my ear toward the front of my temple.",
+      "annotated_slots": [
+        "radiation"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "radiation"
+      ],
+      "exact_slots": [
+        "radiation"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S004",
+      "utterance": "It starts hurting in my ear and then it progresses to the back of my head",
+      "annotated_slots": [
+        "radiation"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "radiation"
+      ],
+      "exact_slots": [
+        "radiation"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-RAD004-P01",
+      "utterance": "The pain begins in my ear and then moves to the back of my head.",
+      "annotated_slots": [
+        "radiation"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "radiation"
+      ],
+      "exact_slots": [
+        "radiation"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S006",
+      "utterance": "The pain doesn't spread anywhere",
+      "annotated_slots": [
+        "radiation"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "radiation"
+      ],
+      "exact_slots": [
+        "radiation"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-RAD006-P01",
+      "utterance": "The pain does not move anywhere else.",
+      "annotated_slots": [
+        "radiation"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "radiation"
+      ],
+      "exact_slots": [
+        "radiation"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S007",
+      "utterance": "The pain radiates from my calves to my feet",
+      "annotated_slots": [
+        "radiation"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "radiation"
+      ],
+      "exact_slots": [
+        "radiation"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-RAD007-P01",
+      "utterance": "The pain spreads from my calves down to my feet.",
+      "annotated_slots": [
+        "radiation"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "radiation"
+      ],
+      "exact_slots": [
+        "radiation"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S025",
+      "utterance": "Taking a deep breath makes the pain increase",
+      "annotated_slots": [
+        "exacerbating"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "exacerbating"
+      ],
+      "exact_slots": [
+        "exacerbating"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-EXA007-P01",
+      "utterance": "The pain gets stronger when I take a deep breath.",
+      "annotated_slots": [
+        "exacerbating"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "exacerbating"
+      ],
+      "exact_slots": [
+        "exacerbating"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S028",
+      "utterance": "I keep getting a tingling sensation in my hand",
+      "annotated_slots": [
+        "main_symptom"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "main_symptom"
+      ],
+      "exact_slots": [],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "P4-MNS002-P01",
+      "utterance": "I keep feeling tingling in my hand.",
+      "annotated_slots": [
+        "main_symptom"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "main_symptom"
+      ],
+      "exact_slots": [],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "P4-S046",
+      "utterance": "My head feels funny",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-AMB002-P01",
+      "utterance": "There is a funny feeling in my head.",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S052",
+      "utterance": "My stomach feels weird",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-AMB008-P01",
+      "utterance": "There is a weird feeling in my stomach.",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S053",
+      "utterance": "I have this unusual feeling in my chest",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-AMB009-P01",
+      "utterance": "There is an unusual sensation in my chest.",
+      "annotated_slots": [
+        "character"
+      ],
+      "pair_count": 1,
+      "filled_slots": [
+        "character"
+      ],
+      "exact_slots": [
+        "character"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": true
+    },
+    {
+      "row_id": "P4-S072",
+      "utterance": "Whenever I try to lift up something heavy I feel dizzy and it only gets better when I sit down for a while",
+      "annotated_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "pair_count": 3,
+      "filled_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "exact_slots": [
+        "onset",
+        "relieving"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    },
+    {
+      "row_id": "P4-MUL010-P01",
+      "utterance": "I feel dizzy whenever I lift something heavy, and sitting down for a while makes it better.",
+      "annotated_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "pair_count": 3,
+      "filled_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "exact_slots": [
+        "onset",
+        "relieving"
+      ],
+      "failed_slots": [],
+      "all_annotated_slots_filled": true,
+      "all_annotated_slots_exact": false
+    }
+  ],
+  "slot_pairs": [
+    {
+      "row_id": "174",
+      "row_index": 1,
+      "pair_index": 1,
+      "utterance": "I haven't, but this might not be related. I had pneumonia ten days before this all started.",
+      "all_annotated_slots": [
+        "associated"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I haven't, but this might not be related. I had pneumonia ten days before this all started.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "398",
+      "row_index": 2,
+      "pair_index": 2,
+      "utterance": "It hurts when I move the shoulder.",
+      "all_annotated_slots": [
+        "exacerbating"
+      ],
+      "target_slot": "exacerbating",
+      "target_page": "Collect Exacerbating Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It hurts when I move the shoulder.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Relieving Factors"
+    },
+    {
+      "row_id": "693",
+      "row_index": 3,
+      "pair_index": 3,
+      "utterance": "Um, I'd say its shooting, sharp, and, um, aching.",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Um, I'd say its shooting, sharp, and, um, aching.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "750",
+      "row_index": 4,
+      "pair_index": 4,
+      "utterance": "I came back because I increased my methothrexate as we discussed the last time I was here. A few days later I started getting multiple canker sores in my mouth. They hurt.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "pain",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Site"
+    },
+    {
+      "row_id": "750",
+      "row_index": 4,
+      "pair_index": 5,
+      "utterance": "I came back because I increased my methothrexate as we discussed the last time I was here. A few days later I started getting multiple canker sores in my mouth. They hurt.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset"
+      ],
+      "target_slot": "site",
+      "target_page": "Collect Site",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I came back because I increased my methothrexate as we discussed the last time I was here. A few days later I started getting multiple canker sores in my mouth. They hurt.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Onset"
+    },
+    {
+      "row_id": "750",
+      "row_index": 4,
+      "pair_index": 6,
+      "utterance": "I came back because I increased my methothrexate as we discussed the last time I was here. A few days later I started getting multiple canker sores in my mouth. They hurt.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I came back because I increased my methothrexate as we discussed the last time I was here. A few days later I started getting multiple canker sores in my mouth. They hurt.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "899",
+      "row_index": 5,
+      "pair_index": 7,
+      "utterance": "Yes! I feel constant tingling sensation and a feeling that something is pinching my never. Sometimes it's just so painful.",
+      "all_annotated_slots": [
+        "character",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Yes! I feel constant tingling sensation and a feeling that something is pinching my never. Sometimes it's just so painful.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "899",
+      "row_index": 5,
+      "pair_index": 8,
+      "utterance": "Yes! I feel constant tingling sensation and a feeling that something is pinching my never. Sometimes it's just so painful.",
+      "all_annotated_slots": [
+        "character",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "constant",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Exacerbating Factors"
+    },
+    {
+      "row_id": "899",
+      "row_index": 5,
+      "pair_index": 9,
+      "utterance": "Yes! I feel constant tingling sensation and a feeling that something is pinching my never. Sometimes it's just so painful.",
+      "all_annotated_slots": [
+        "character",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Yes! I feel constant tingling sensation and a feeling that something is pinching my never. Sometimes it's just so painful.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "1025",
+      "row_index": 6,
+      "pair_index": 10,
+      "utterance": "Um, I had my first one about two months ago.",
+      "all_annotated_slots": [
+        "onset"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Um, I had my first one about two months ago.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "1028",
+      "row_index": 7,
+      "pair_index": 11,
+      "utterance": "I'd say it feels like a pressure sensation.",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I'd say it feels like a pressure sensation.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "1082",
+      "row_index": 8,
+      "pair_index": 12,
+      "utterance": "I felt a sharp pain in my lower back right away when I tried to lift those boxes.",
+      "all_annotated_slots": [
+        "site",
+        "onset",
+        "character"
+      ],
+      "target_slot": "site",
+      "target_page": "Collect Site",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I felt a sharp pain in my lower back right away when I tried to lift those boxes.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Onset"
+    },
+    {
+      "row_id": "1082",
+      "row_index": 8,
+      "pair_index": 13,
+      "utterance": "I felt a sharp pain in my lower back right away when I tried to lift those boxes.",
+      "all_annotated_slots": [
+        "site",
+        "onset",
+        "character"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I felt a sharp pain in my lower back right away when I tried to lift those boxes.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "1082",
+      "row_index": 8,
+      "pair_index": 14,
+      "utterance": "I felt a sharp pain in my lower back right away when I tried to lift those boxes.",
+      "all_annotated_slots": [
+        "site",
+        "onset",
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I felt a sharp pain in my lower back right away when I tried to lift those boxes.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "1213",
+      "row_index": 9,
+      "pair_index": 15,
+      "utterance": "Um, actually yeah, I've been having some respiratory problems for the last three days or so.",
+      "all_annotated_slots": [
+        "onset",
+        "associated"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Um, actually yeah, I've been having some respiratory problems for the last three days or so.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "1213",
+      "row_index": 9,
+      "pair_index": 16,
+      "utterance": "Um, actually yeah, I've been having some respiratory problems for the last three days or so.",
+      "all_annotated_slots": [
+        "onset",
+        "associated"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Um, actually yeah, I've been having some respiratory problems for the last three days or so.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "1244",
+      "row_index": 10,
+      "pair_index": 17,
+      "utterance": "A few days after the numbness started.",
+      "all_annotated_slots": [
+        "onset"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "A few days after the numbness started.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "1395",
+      "row_index": 11,
+      "pair_index": 18,
+      "utterance": "Mostly, it's in the back of my shoulder.",
+      "all_annotated_slots": [
+        "site"
+      ],
+      "target_slot": "site",
+      "target_page": "Collect Site",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Mostly, it's in the back of my shoulder.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Onset"
+    },
+    {
+      "row_id": "1396",
+      "row_index": 12,
+      "pair_index": 19,
+      "utterance": "It hurt really bad yesterday, but that's gone away now.",
+      "all_annotated_slots": [
+        "site",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "site",
+      "target_page": "Collect Site",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It hurt really bad yesterday, but that's gone away now.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Onset"
+    },
+    {
+      "row_id": "1396",
+      "row_index": 12,
+      "pair_index": 20,
+      "utterance": "It hurt really bad yesterday, but that's gone away now.",
+      "all_annotated_slots": [
+        "site",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "1396",
+      "row_index": 12,
+      "pair_index": 21,
+      "utterance": "It hurt really bad yesterday, but that's gone away now.",
+      "all_annotated_slots": [
+        "site",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It hurt really bad yesterday, but that's gone away now.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "1493",
+      "row_index": 13,
+      "pair_index": 22,
+      "utterance": "Huh, my symptoms have sure started affecting my work. You know what the worst part is, my boss came to me last week and asked if I was on some kinds of drugs. I literally shouted at her saying no and left the clinic in tears. I think I need some drugs; I mean some medications to deal with my issues.",
+      "all_annotated_slots": [
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Severity"
+    },
+    {
+      "row_id": "1534",
+      "row_index": 14,
+      "pair_index": 23,
+      "utterance": "I began having weakness in my right arm, and there was some neck pain too.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "associated"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "weakness",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Site"
+    },
+    {
+      "row_id": "1534",
+      "row_index": 14,
+      "pair_index": 24,
+      "utterance": "I began having weakness in my right arm, and there was some neck pain too.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "associated"
+      ],
+      "target_slot": "site",
+      "target_page": "Collect Site",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I began having weakness in my right arm, and there was some neck pain too.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Onset"
+    },
+    {
+      "row_id": "1534",
+      "row_index": 14,
+      "pair_index": 25,
+      "utterance": "I began having weakness in my right arm, and there was some neck pain too.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "associated"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I began having weakness in my right arm, and there was some neck pain too.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "1785",
+      "row_index": 15,
+      "pair_index": 26,
+      "utterance": "At least three times until my stomach is empty.",
+      "all_annotated_slots": [
+        "timing"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "1816",
+      "row_index": 16,
+      "pair_index": 27,
+      "utterance": "Honestly, I feel tired. Sometimes I also have this dull headache.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "character",
+        "associated",
+        "timing"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "headache",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Site"
+    },
+    {
+      "row_id": "1816",
+      "row_index": 16,
+      "pair_index": 28,
+      "utterance": "Honestly, I feel tired. Sometimes I also have this dull headache.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "character",
+        "associated",
+        "timing"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Honestly, I feel tired. Sometimes I also have this dull headache.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "1816",
+      "row_index": 16,
+      "pair_index": 29,
+      "utterance": "Honestly, I feel tired. Sometimes I also have this dull headache.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "character",
+        "associated",
+        "timing"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Honestly, I feel tired. Sometimes I also have this dull headache.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "1816",
+      "row_index": 16,
+      "pair_index": 30,
+      "utterance": "Honestly, I feel tired. Sometimes I also have this dull headache.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "character",
+        "associated",
+        "timing"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "1985",
+      "row_index": 17,
+      "pair_index": 31,
+      "utterance": "Not really, no.",
+      "all_annotated_slots": [
+        "associated"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Not really, no.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "2017",
+      "row_index": 18,
+      "pair_index": 32,
+      "utterance": "No.",
+      "all_annotated_slots": [
+        "associated"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "No.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "2160",
+      "row_index": 19,
+      "pair_index": 33,
+      "utterance": "For the past three months. I've been using my inhaler every day. I used to use it every now and again. This is definitely new for me.",
+      "all_annotated_slots": [
+        "onset"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "For the past three months. I've been using my inhaler every day. I used to use it every now and again. This is definitely new for me.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "2363",
+      "row_index": 20,
+      "pair_index": 34,
+      "utterance": "Yeah, I do feel feverish and have nausea as well.",
+      "all_annotated_slots": [
+        "associated"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Yeah, I do feel feverish and have nausea as well.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "2383",
+      "row_index": 21,
+      "pair_index": 35,
+      "utterance": "Yes, there was the fever and chills. I was sweating a lot in the nights, and I also had weight loss of around twenty pounds. During that time, I sometimes have nausea and was throwing up a lot. I was not eating. I always felt dizzy every time I tried to stand.",
+      "all_annotated_slots": [
+        "associated",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "2383",
+      "row_index": 21,
+      "pair_index": 36,
+      "utterance": "Yes, there was the fever and chills. I was sweating a lot in the nights, and I also had weight loss of around twenty pounds. During that time, I sometimes have nausea and was throwing up a lot. I was not eating. I always felt dizzy every time I tried to stand.",
+      "all_annotated_slots": [
+        "associated",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "2383",
+      "row_index": 21,
+      "pair_index": 37,
+      "utterance": "Yes, there was the fever and chills. I was sweating a lot in the nights, and I also had weight loss of around twenty pounds. During that time, I sometimes have nausea and was throwing up a lot. I was not eating. I always felt dizzy every time I tried to stand.",
+      "all_annotated_slots": [
+        "associated",
+        "timing",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Severity"
+    },
+    {
+      "row_id": "2443",
+      "row_index": 22,
+      "pair_index": 38,
+      "utterance": "Wow, that's right where it hurts.",
+      "all_annotated_slots": [
+        "site"
+      ],
+      "target_slot": "site",
+      "target_page": "Collect Site",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Wow, that's right where it hurts.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Onset"
+    },
+    {
+      "row_id": "2546",
+      "row_index": 23,
+      "pair_index": 39,
+      "utterance": "Panic attacks. I have really bad episodes without it. Um I think I started it about four months ago. I could be wrong though. I've lost track of time.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "severity"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Main Symptom"
+    },
+    {
+      "row_id": "2546",
+      "row_index": 23,
+      "pair_index": 40,
+      "utterance": "Panic attacks. I have really bad episodes without it. Um I think I started it about four months ago. I could be wrong though. I've lost track of time.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Panic attacks. I have really bad episodes without it. Um I think I started it about four months ago. I could be wrong though. I've lost track of time.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "2771",
+      "row_index": 24,
+      "pair_index": 41,
+      "utterance": "Well, sometimes, you see, hot showers made me feel better, but it is like only sometimes.",
+      "all_annotated_slots": [
+        "relieving"
+      ],
+      "target_slot": "relieving",
+      "target_page": "Collect Relieving Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Well, sometimes, you see, hot showers made me feel better, but it is like only sometimes.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Severity"
+    },
+    {
+      "row_id": "2947",
+      "row_index": 25,
+      "pair_index": 42,
+      "utterance": "Laying on my side helps a little.",
+      "all_annotated_slots": [
+        "relieving"
+      ],
+      "target_slot": "relieving",
+      "target_page": "Collect Relieving Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Laying on my side helps a little.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Severity"
+    },
+    {
+      "row_id": "3071",
+      "row_index": 26,
+      "pair_index": 43,
+      "utterance": "Um, I'd say it's deep, and it really aches.",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Um, I'd say it's deep, and it really aches.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "3073",
+      "row_index": 27,
+      "pair_index": 44,
+      "utterance": "I can't go up and down stairs without a lot of pain, and it hurts when I sit for a long time, like when I drive.",
+      "all_annotated_slots": [
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "exacerbating",
+      "target_page": "Collect Exacerbating Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I can't go up and down stairs without a lot of pain, and it hurts when I sit for a long time, like when I drive.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Relieving Factors"
+    },
+    {
+      "row_id": "3073",
+      "row_index": 27,
+      "pair_index": 45,
+      "utterance": "I can't go up and down stairs without a lot of pain, and it hurts when I sit for a long time, like when I drive.",
+      "all_annotated_slots": [
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I can't go up and down stairs without a lot of pain, and it hurts when I sit for a long time, like when I drive.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "3142",
+      "row_index": 28,
+      "pair_index": 46,
+      "utterance": "Do you know I lost twenty pound of weight since all these symptoms began but i have been also admitted for poor appetite.",
+      "all_annotated_slots": [
+        "associated"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Do you know I lost twenty pound of weight since all these symptoms began but i have been also admitted for poor appetite.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "3413",
+      "row_index": 29,
+      "pair_index": 47,
+      "utterance": "Um no, not really. I've had a terrible cough along with frequent headaches and chest congestion. I have also had a low fever.",
+      "all_annotated_slots": [
+        "associated",
+        "timing",
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Um no, not really. I've had a terrible cough along with frequent headaches and chest congestion. I have also had a low fever.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "3413",
+      "row_index": 29,
+      "pair_index": 48,
+      "utterance": "Um no, not really. I've had a terrible cough along with frequent headaches and chest congestion. I have also had a low fever.",
+      "all_annotated_slots": [
+        "associated",
+        "timing",
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "frequent",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Exacerbating Factors"
+    },
+    {
+      "row_id": "3413",
+      "row_index": 29,
+      "pair_index": 49,
+      "utterance": "Um no, not really. I've had a terrible cough along with frequent headaches and chest congestion. I have also had a low fever.",
+      "all_annotated_slots": [
+        "associated",
+        "timing",
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "exacerbating",
+      "target_page": "Collect Exacerbating Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Um no, not really. I've had a terrible cough along with frequent headaches and chest congestion. I have also had a low fever.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Relieving Factors"
+    },
+    {
+      "row_id": "3413",
+      "row_index": 29,
+      "pair_index": 50,
+      "utterance": "Um no, not really. I've had a terrible cough along with frequent headaches and chest congestion. I have also had a low fever.",
+      "all_annotated_slots": [
+        "associated",
+        "timing",
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Um no, not really. I've had a terrible cough along with frequent headaches and chest congestion. I have also had a low fever.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "3488",
+      "row_index": 30,
+      "pair_index": 51,
+      "utterance": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "all_annotated_slots": [
+        "site",
+        "associated",
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "site",
+      "target_page": "Collect Site",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Onset"
+    },
+    {
+      "row_id": "3488",
+      "row_index": 30,
+      "pair_index": 52,
+      "utterance": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "all_annotated_slots": [
+        "site",
+        "associated",
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "3488",
+      "row_index": 30,
+      "pair_index": 53,
+      "utterance": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "all_annotated_slots": [
+        "site",
+        "associated",
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "exacerbating",
+      "target_page": "Collect Exacerbating Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Relieving Factors"
+    },
+    {
+      "row_id": "3488",
+      "row_index": 30,
+      "pair_index": 54,
+      "utterance": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "all_annotated_slots": [
+        "site",
+        "associated",
+        "exacerbating",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Oh yeah, whenever I'm stressed. I feel like I have more palpitations and to the level that it causes a lot of chest pain.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "3493",
+      "row_index": 31,
+      "pair_index": 55,
+      "utterance": "Yeah, for the last three days and I am having these tummy issues. I'm having on and off nausea and also, my stools are coming loose.",
+      "all_annotated_slots": [
+        "onset",
+        "associated",
+        "timing"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Yeah, for the last three days and I am having these tummy issues. I'm having on and off nausea and also, my stools are coming loose.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "3493",
+      "row_index": 31,
+      "pair_index": 56,
+      "utterance": "Yeah, for the last three days and I am having these tummy issues. I'm having on and off nausea and also, my stools are coming loose.",
+      "all_annotated_slots": [
+        "onset",
+        "associated",
+        "timing"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Yeah, for the last three days and I am having these tummy issues. I'm having on and off nausea and also, my stools are coming loose.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "3493",
+      "row_index": 31,
+      "pair_index": 57,
+      "utterance": "Yeah, for the last three days and I am having these tummy issues. I'm having on and off nausea and also, my stools are coming loose.",
+      "all_annotated_slots": [
+        "onset",
+        "associated",
+        "timing"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "intermittent",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Exacerbating Factors"
+    },
+    {
+      "row_id": "3502",
+      "row_index": 32,
+      "pair_index": 58,
+      "utterance": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "all_annotated_slots": [
+        "onset",
+        "associated",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "3502",
+      "row_index": 32,
+      "pair_index": 59,
+      "utterance": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "all_annotated_slots": [
+        "onset",
+        "associated",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "3502",
+      "row_index": 32,
+      "pair_index": 60,
+      "utterance": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "all_annotated_slots": [
+        "onset",
+        "associated",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "relieving",
+      "target_page": "Collect Relieving Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Severity"
+    },
+    {
+      "row_id": "3502",
+      "row_index": 32,
+      "pair_index": 61,
+      "utterance": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "all_annotated_slots": [
+        "onset",
+        "associated",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "No. I did have a slight headache last night but I took Advil and it's since gotten better.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "4013",
+      "row_index": 33,
+      "pair_index": 62,
+      "utterance": "I hurt my foot pretty bad yesterday.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset",
+        "severity"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "pain",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Site"
+    },
+    {
+      "row_id": "4013",
+      "row_index": 33,
+      "pair_index": 63,
+      "utterance": "I hurt my foot pretty bad yesterday.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset",
+        "severity"
+      ],
+      "target_slot": "site",
+      "target_page": "Collect Site",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I hurt my foot pretty bad yesterday.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Onset"
+    },
+    {
+      "row_id": "4013",
+      "row_index": 33,
+      "pair_index": 64,
+      "utterance": "I hurt my foot pretty bad yesterday.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset",
+        "severity"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I hurt my foot pretty bad yesterday.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "4013",
+      "row_index": 33,
+      "pair_index": 65,
+      "utterance": "I hurt my foot pretty bad yesterday.",
+      "all_annotated_slots": [
+        "main_symptom",
+        "site",
+        "onset",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I hurt my foot pretty bad yesterday.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "4076",
+      "row_index": 34,
+      "pair_index": 66,
+      "utterance": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "all_annotated_slots": [
+        "character",
+        "timing",
+        "exacerbating",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "4076",
+      "row_index": 34,
+      "pair_index": 67,
+      "utterance": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "all_annotated_slots": [
+        "character",
+        "timing",
+        "exacerbating",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "4076",
+      "row_index": 34,
+      "pair_index": 68,
+      "utterance": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "all_annotated_slots": [
+        "character",
+        "timing",
+        "exacerbating",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "exacerbating",
+      "target_page": "Collect Exacerbating Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Relieving Factors"
+    },
+    {
+      "row_id": "4076",
+      "row_index": 34,
+      "pair_index": 69,
+      "utterance": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "all_annotated_slots": [
+        "character",
+        "timing",
+        "exacerbating",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "relieving",
+      "target_page": "Collect Relieving Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Severity"
+    },
+    {
+      "row_id": "4076",
+      "row_index": 34,
+      "pair_index": 70,
+      "utterance": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "all_annotated_slots": [
+        "character",
+        "timing",
+        "exacerbating",
+        "relieving",
+        "severity"
+      ],
+      "target_slot": "severity",
+      "target_page": "Collect Severity",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It gets worse at night. If I sleep on it, like in a certain way, it will just wake me up and it starts hurting. These tingling sensations are the worst. It helps if I shake it then the sensation goes away. It irritates me all the time.",
+      "exact_text_preservation": true,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "4106",
+      "row_index": 35,
+      "pair_index": 71,
+      "utterance": "I'm back on Zoloft again because I think I might be depressed. Ever since losing most of my mobility, I haven't been feeling like my usual myself. I'm also sleeping all the time.",
+      "all_annotated_slots": [
+        "associated",
+        "timing"
+      ],
+      "target_slot": "associated",
+      "target_page": "Collect Associated Symptoms",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I'm back on Zoloft again because I think I might be depressed. Ever since losing most of my mobility, I haven't been feeling like my usual myself. I'm also sleeping all the time.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Timing"
+    },
+    {
+      "row_id": "4106",
+      "row_index": 35,
+      "pair_index": 72,
+      "utterance": "I'm back on Zoloft again because I think I might be depressed. Ever since losing most of my mobility, I haven't been feeling like my usual myself. I'm also sleeping all the time.",
+      "all_annotated_slots": [
+        "associated",
+        "timing"
+      ],
+      "target_slot": "timing",
+      "target_page": "Collect Timing",
+      "request_success": true,
+      "filled": false,
+      "returned_value": null,
+      "exact_text_preservation": false,
+      "returned_page": "Review Information"
+    },
+    {
+      "row_id": "4454",
+      "row_index": 36,
+      "pair_index": 73,
+      "utterance": "It's been about eight or ten years now. It began while I was working in construction.",
+      "all_annotated_slots": [
+        "onset"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It's been about eight or ten years now. It began while I was working in construction.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "4455",
+      "row_index": 37,
+      "pair_index": 74,
+      "utterance": "I'm thirty two now, so I've been in pain since I was in my twenties.",
+      "all_annotated_slots": [
+        "onset"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I'm thirty two now, so I've been in pain since I was in my twenties.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "P4-S002",
+      "row_index": 38,
+      "pair_index": 75,
+      "utterance": "The ache travels from my ear to the front of my temple",
+      "all_annotated_slots": [
+        "radiation"
+      ],
+      "target_slot": "radiation",
+      "target_page": "Collect Radiation",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "The ache travels from my ear to the front of my temple",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "P4-RAD002-P01",
+      "row_index": 39,
+      "pair_index": 76,
+      "utterance": "The ache moves from my ear toward the front of my temple.",
+      "all_annotated_slots": [
+        "radiation"
+      ],
+      "target_slot": "radiation",
+      "target_page": "Collect Radiation",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "The ache moves from my ear toward the front of my temple.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "P4-S004",
+      "row_index": 40,
+      "pair_index": 77,
+      "utterance": "It starts hurting in my ear and then it progresses to the back of my head",
+      "all_annotated_slots": [
+        "radiation"
+      ],
+      "target_slot": "radiation",
+      "target_page": "Collect Radiation",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "It starts hurting in my ear and then it progresses to the back of my head",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "P4-RAD004-P01",
+      "row_index": 41,
+      "pair_index": 78,
+      "utterance": "The pain begins in my ear and then moves to the back of my head.",
+      "all_annotated_slots": [
+        "radiation"
+      ],
+      "target_slot": "radiation",
+      "target_page": "Collect Radiation",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "The pain begins in my ear and then moves to the back of my head.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "P4-S006",
+      "row_index": 42,
+      "pair_index": 79,
+      "utterance": "The pain doesn't spread anywhere",
+      "all_annotated_slots": [
+        "radiation"
+      ],
+      "target_slot": "radiation",
+      "target_page": "Collect Radiation",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "The pain doesn't spread anywhere",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "P4-RAD006-P01",
+      "row_index": 43,
+      "pair_index": 80,
+      "utterance": "The pain does not move anywhere else.",
+      "all_annotated_slots": [
+        "radiation"
+      ],
+      "target_slot": "radiation",
+      "target_page": "Collect Radiation",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "The pain does not move anywhere else.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "P4-S007",
+      "row_index": 44,
+      "pair_index": 81,
+      "utterance": "The pain radiates from my calves to my feet",
+      "all_annotated_slots": [
+        "radiation"
+      ],
+      "target_slot": "radiation",
+      "target_page": "Collect Radiation",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "The pain radiates from my calves to my feet",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "P4-RAD007-P01",
+      "row_index": 45,
+      "pair_index": 82,
+      "utterance": "The pain spreads from my calves down to my feet.",
+      "all_annotated_slots": [
+        "radiation"
+      ],
+      "target_slot": "radiation",
+      "target_page": "Collect Radiation",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "The pain spreads from my calves down to my feet.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Associated Symptoms"
+    },
+    {
+      "row_id": "P4-S025",
+      "row_index": 46,
+      "pair_index": 83,
+      "utterance": "Taking a deep breath makes the pain increase",
+      "all_annotated_slots": [
+        "exacerbating"
+      ],
+      "target_slot": "exacerbating",
+      "target_page": "Collect Exacerbating Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Taking a deep breath makes the pain increase",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Relieving Factors"
+    },
+    {
+      "row_id": "P4-EXA007-P01",
+      "row_index": 47,
+      "pair_index": 84,
+      "utterance": "The pain gets stronger when I take a deep breath.",
+      "all_annotated_slots": [
+        "exacerbating"
+      ],
+      "target_slot": "exacerbating",
+      "target_page": "Collect Exacerbating Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "The pain gets stronger when I take a deep breath.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Relieving Factors"
+    },
+    {
+      "row_id": "P4-S028",
+      "row_index": 48,
+      "pair_index": 85,
+      "utterance": "I keep getting a tingling sensation in my hand",
+      "all_annotated_slots": [
+        "main_symptom"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "tingling",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Site"
+    },
+    {
+      "row_id": "P4-MNS002-P01",
+      "row_index": 49,
+      "pair_index": 86,
+      "utterance": "I keep feeling tingling in my hand.",
+      "all_annotated_slots": [
+        "main_symptom"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "tingling",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Site"
+    },
+    {
+      "row_id": "P4-S046",
+      "row_index": 50,
+      "pair_index": 87,
+      "utterance": "My head feels funny",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "My head feels funny",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "P4-AMB002-P01",
+      "row_index": 51,
+      "pair_index": 88,
+      "utterance": "There is a funny feeling in my head.",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "There is a funny feeling in my head.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "P4-S052",
+      "row_index": 52,
+      "pair_index": 89,
+      "utterance": "My stomach feels weird",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "My stomach feels weird",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "P4-AMB008-P01",
+      "row_index": 53,
+      "pair_index": 90,
+      "utterance": "There is a weird feeling in my stomach.",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "There is a weird feeling in my stomach.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "P4-S053",
+      "row_index": 54,
+      "pair_index": 91,
+      "utterance": "I have this unusual feeling in my chest",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I have this unusual feeling in my chest",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "P4-AMB009-P01",
+      "row_index": 55,
+      "pair_index": 92,
+      "utterance": "There is an unusual sensation in my chest.",
+      "all_annotated_slots": [
+        "character"
+      ],
+      "target_slot": "character",
+      "target_page": "Collect Character",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "There is an unusual sensation in my chest.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Radiation"
+    },
+    {
+      "row_id": "P4-S072",
+      "row_index": 56,
+      "pair_index": 93,
+      "utterance": "Whenever I try to lift up something heavy I feel dizzy and it only gets better when I sit down for a while",
+      "all_annotated_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Whenever I try to lift up something heavy I feel dizzy and it only gets better when I sit down for a while",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "P4-S072",
+      "row_index": 56,
+      "pair_index": 94,
+      "utterance": "Whenever I try to lift up something heavy I feel dizzy and it only gets better when I sit down for a while",
+      "all_annotated_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "dizziness",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Site"
+    },
+    {
+      "row_id": "P4-S072",
+      "row_index": 56,
+      "pair_index": 95,
+      "utterance": "Whenever I try to lift up something heavy I feel dizzy and it only gets better when I sit down for a while",
+      "all_annotated_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "target_slot": "relieving",
+      "target_page": "Collect Relieving Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "Whenever I try to lift up something heavy I feel dizzy and it only gets better when I sit down for a while",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Severity"
+    },
+    {
+      "row_id": "P4-MUL010-P01",
+      "row_index": 57,
+      "pair_index": 96,
+      "utterance": "I feel dizzy whenever I lift something heavy, and sitting down for a while makes it better.",
+      "all_annotated_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "target_slot": "onset",
+      "target_page": "Collect Onset",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I feel dizzy whenever I lift something heavy, and sitting down for a while makes it better.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Character"
+    },
+    {
+      "row_id": "P4-MUL010-P01",
+      "row_index": 57,
+      "pair_index": 97,
+      "utterance": "I feel dizzy whenever I lift something heavy, and sitting down for a while makes it better.",
+      "all_annotated_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "target_slot": "main_symptom",
+      "target_page": "Collect Main Symptom",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "dizziness",
+      "exact_text_preservation": false,
+      "returned_page": "Collect Site"
+    },
+    {
+      "row_id": "P4-MUL010-P01",
+      "row_index": 57,
+      "pair_index": 98,
+      "utterance": "I feel dizzy whenever I lift something heavy, and sitting down for a while makes it better.",
+      "all_annotated_slots": [
+        "onset",
+        "main_symptom",
+        "relieving"
+      ],
+      "target_slot": "relieving",
+      "target_page": "Collect Relieving Factors",
+      "request_success": true,
+      "filled": true,
+      "returned_value": "I feel dizzy whenever I lift something heavy, and sitting down for a while makes it better.",
+      "exact_text_preservation": true,
+      "returned_page": "Collect Severity"
+    }
+  ]
+}
